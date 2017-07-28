@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.shortcuts import render
+
+
+def test_firstPage(request):
+    return render(request, 'test/test.html')
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r"^$", test_firstPage, name="first_page_test"),
+
 ]
