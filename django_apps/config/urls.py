@@ -13,7 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls import include, url
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.shortcuts import render
 
@@ -24,6 +26,14 @@ def test_firstPage(request):
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # url(r"^music/", include("music.urls")),
     url(r"^$", test_firstPage, name="first_page_test"),
-
+    # url(r'^__debug__/', include(debug_toolbar.urls)),
 ]
+
+# For Debugging
+# TODO debugging일떄만 작동하도록l
+urlpatterns += static(
+    prefix=settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)

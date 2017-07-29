@@ -1,62 +1,28 @@
-# Create your models here.
 from django.contrib.auth import models as auth_models
-from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
-from django.core.validators import validate_email
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
+from .MyUserManager import MyUserManager
 
 __all__ = (
     'User',
 )
 
 
-class MyUserManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
-        try:
-            validate_email(email)
-            user = self.model(
-                email=self.normalize_email(email),
-                username=username,
-                # name=name,
-            )
-            user.set_password(password)
-            user.save()
-            return user
-        except ValidationError:
-            raise ValidationError('이메일 양식이 올바르지 않습니다.')
-
-    def create_superuser(self, email, username, password=None):
-        try:
-            validate_email(email)
-            user = self.create_user(
-                email=email,
-                username=username,
-                # name=name,
-                password=password,
-            )
-            user.is_admin = True
-            user.is_superuser = True
-            user.is_active = True
-            user.save()
-            return user
-        except ValidationError:
-            raise ValidationError('이메일 양식이 올바르지 않습니다.')
-
-
 # 사용자 정보 모델
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
-        verbose_name='Email ID',
+        _('email address'),
         max_length=255,
         unique=True,
         null=True,
     )
-    username = models.CharField(max_length=40, null=True, unique=True)
-    first_name = models.CharField(max_length=20, default='')
-    last_name = models.CharField(max_length=20, default='')
+    username = models.CharField(_('username'), max_length=40, null=True, unique=True)
+    first_name = models.CharField(_('first name'), max_length=20, default='')
+    last_name = models.CharField(_('last name'), max_length=20, default='')
+
     # TODO img_profile - CustomImageField 설정 필요
     img_profile = models.ImageField(upload_to='member', blank=True)
     is_admin = models.BooleanField(default=False)

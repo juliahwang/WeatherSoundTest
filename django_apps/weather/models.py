@@ -1,15 +1,19 @@
+import requests
 from django.db import models
 
 
 # Create your models here.
-
-
+# 사용자의 위치를 받아와 날씨정보 ()시간마다 DB에 업데이트
 class Weather(models.Model):
     # latitude = models.FloatField(verbose_name='위도')
     # longitude = models.FloatField(verbose_name='경도')
-    # location = models.CharField(max_length=100)
+    # location = models.CharField(
+    #     verbose_name="지역",
+    #     max_length=100)
     time_range = models.DateTimeField(auto_created=True)
-    name_area = models.CharField(max_length=100)
+    name_area = models.CharField(
+        verbose_name="지역",
+        max_length=100)
     weather = models.CharField(max_length=100)
 
     def __str__(self):
@@ -18,9 +22,7 @@ class Weather(models.Model):
         )
 
 
-import requests
-
-
+# TODO DB용으로 변경 ㄱ ㄱ
 class GetWeather:
     def __init__(self, secret_key_weather, secret_key_google_geo, ):
         self.secret_key_weather = secret_key_weather
