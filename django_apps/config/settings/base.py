@@ -26,7 +26,6 @@ CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, "settings_common.jso
 CONFIG_SECRET_DEBUG_FILE = os.path.join(CONFIG_SECRET_DIR, "settings_debug.json")
 CONFIG_SECRET_DEPLOY_FILE = os.path.join(CONFIG_SECRET_DIR, "settings_deploy.json")
 
-# INTERNAL_IPS = ('127.0.0.1',)
 
 AUTH_USER_MODEL = "member.User"
 
@@ -77,7 +76,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # Custom
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 
 ]
 
@@ -87,6 +85,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            ##########
+            # Custom #
+            ##########
             TEMPLATE_DIR,
         ],
         'APP_DIRS': True,
