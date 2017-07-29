@@ -26,7 +26,6 @@ CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, "settings_common.jso
 CONFIG_SECRET_DEBUG_FILE = os.path.join(CONFIG_SECRET_DIR, "settings_debug.json")
 CONFIG_SECRET_DEPLOY_FILE = os.path.join(CONFIG_SECRET_DIR, "settings_deploy.json")
 
-
 AUTH_USER_MODEL = "member.User"
 
 config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
@@ -64,6 +63,9 @@ INSTALLED_APPS = [
     "music",
     "member",
     "weather",
+    "snippets",
+
+
 ]
 
 MIDDLEWARE = [
