@@ -65,7 +65,7 @@ INSTALLED_APPS = [
 
     "music",
     "member",
-    "weather",
+    # "weather",
     # "snippets",
 
 ]

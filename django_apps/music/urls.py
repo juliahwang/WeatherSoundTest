@@ -1,4 +1,8 @@
 from django.conf.urls import url
+
+from . import views
+
 urlpatterns = [
-    # url(r'^list/$', name='music_list'),
+    url(r"^$", views.MusicListCreateView.as_view()),
+    url(r'^(?P<pk>\d+)/$', views.MusicRetrieveView.as_view()),
 ]

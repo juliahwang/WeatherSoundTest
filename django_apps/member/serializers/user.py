@@ -13,8 +13,6 @@ __all__ = (
 
 
 # TODO Password fiedls?
-
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
