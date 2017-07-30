@@ -21,10 +21,10 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "username",
             "img_profile",
-
         )
 
 
+# TODO 잘 안되는듯
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
