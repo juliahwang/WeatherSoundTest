@@ -27,9 +27,11 @@ def test_firstPage(request):
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r"^music/", include("music.urls")),
-    url(r"^$", test_firstPage, name="first_page_test"),
-    url(r'^api/', include('snippets.urls')),
+    url(r"^member/", include("member.urls.url_apis")),
+    # url(r'^api/', include('snippets.urls')),
     # url(r'^__debug__/', include(debug_toolbar.urls)),
+
+    url(r"^$", test_firstPage, name="first_page_test"),
 ]
 
 # For Debugging

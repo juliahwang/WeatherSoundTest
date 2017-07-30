@@ -36,7 +36,10 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+#     'PAGINATE_BY': 10
+# }
 ##########
 ##########
 ##########
@@ -63,8 +66,7 @@ INSTALLED_APPS = [
     "music",
     "member",
     "weather",
-    "snippets",
-
+    # "snippets",
 
 ]
 
